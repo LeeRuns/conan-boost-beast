@@ -7,8 +7,7 @@ import os
 
 class BoostBeastConan(ConanFile):
     name = "Boost.Beast"
-    version = "20171013"
-    commit_id = "f09b2d3e1c9d383e5d0f57b1bf889568cf27c39f"
+    version = "124"
     url = "https://github.com/bincrafters/conan-boost-beast"
     description = "Boost.beast provides HTTP and WebSocket built on Boost.Asio in C++11"
     license = "www.boost.org/users/license.html"
@@ -22,7 +21,7 @@ class BoostBeastConan(ConanFile):
         for lib_short_name in self.lib_short_names:
             self.run("git clone --branch=master {0}/{1}.git".format(source_url, lib_short_name))
             with tools.chdir(lib_short_name):
-                self.run("git checkout {0}".format(self.commit_id))
+                self.run("git checkout tags/v{0}".format(self.version))
             
     # TODO: Switch to this method after 1.66.0 release
     # def source(self):
